@@ -1,0 +1,5 @@
+# Secrets: never commit access tokens
+*token*.txt
+.vercel-token
+.github-token
+.vercel/
