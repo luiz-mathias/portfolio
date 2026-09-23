@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luiz Henrique Mathias</title>
+<meta name="description" content="Strategy and technology leader. MBA candidate at Carnegie Mellon Tepper. Portfolio of Luiz Henrique Mathias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #edf0ee;
+    --surface: #ffffff;
+    --ink: #10222a;
+    --muted: #52656a;
+    --rule: #c9d2cf;
+    --accent: #0b6e55;
+    --accent-soft: #d6ebe3;
+    --mark: #f0b429;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    --wrap: 1120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0d1618;
+      --surface: #142124;
+      --ink: #e4ebe9;
+      --muted: #93a5a7;
+      --rule: #25373b;
+      --accent: #45c39c;
+      --accent-soft: #173a31;
+      --mark: #e3ae45;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0d1618;
+    --surface: #142124;
+    --ink: #e4ebe9;
+    --muted: #93a5a7;
+    --rule: #25373b;
+    --accent: #45c39c;
+    --accent-soft: #173a31;
+    --mark: #e3ae45;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 17px/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .monogram { font: 800 18px/1 var(--display); letter-spacing: -0.02em; text-decoration: none; }
+  .monogram span { color: var(--accent); }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(12px, 2.4vw, 28px); flex-wrap: wrap; }
+  .nav ul a { font: 500 13px/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+  .nav ul a:hover { color: var(--ink); }
+  @media (max-width: 640px) { .nav ul li.opt { display: none; } }
+
+  /* Shared type */
+  .eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; }
+  h3 { font-size: 21px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  section { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--rule); }
+  .sec-head { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: clamp(28px, 4vw, 44px); max-width: 720px; }
+  .sec-head p { color: var(--muted); }
+
+  /* Hero */
+  .hero { padding-block: clamp(48px, 8vw, 96px) clamp(48px, 7vw, 80px); border-top: 0; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: end; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero .name { font: 500 14px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; }
+  .hero h1 {
+    font-size: clamp(42px, 7.2vw, 88px); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em;
+  }
+  .hero h1 .hl { background: linear-gradient(transparent 68%, var(--mark) 68%, var(--mark) 90%, transparent 90%); padding-inline: 2px; }
+  .hero .lede { margin-top: 28px; font-size: clamp(18px, 1.6vw, 20px); max-width: 60ch; color: var(--ink); }
+  .hero .lede em { font-style: normal; color: var(--muted); }
+  .now {
+    margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    font: 500 13px/1.4 var(--mono); padding: 8px 14px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--ink);
+  }
+  .now .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  .cta { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 6px;
+    font: 600 15px/1 var(--body); text-decoration: none; cursor: pointer; border: 1px solid var(--ink);
+    transition: background .15s, color .15s;
+  }
+  .btn.solid { background: var(--ink); color: var(--ground); }
+  .btn.solid:hover { background: var(--accent); border-color: var(--accent); }
+  .btn.line { background: transparent; color: var(--ink); }
+  .btn.line:hover { background: var(--surface); }
+
+  .route { border-left: 1px solid var(--rule); padding-left: 24px; }
+  .route .eyebrow { color: var(--muted); }
+  .route ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .route li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline; position: relative; }
+  .route li::before {
+    content: ""; position: absolute; left: -29px; top: 8px; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ground); border: 2px solid var(--muted);
+  }
+  .route li.here::before { background: var(--accent); border-color: var(--accent); }
+  .route .yr { font: 400 13px/1.5 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .route .city { font-weight: 600; font-size: 15px; line-height: 1.4; }
+  .route .what { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+
+  /* Impact ledger */
+  .ledger { border-top: 2px solid var(--ink); }
+  .ledger-row {
+    display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) minmax(120px, 200px);
+    gap: 8px 32px; align-items: baseline; padding-block: 22px; border-bottom: 1px solid var(--rule);
+  }
+  .ledger-row .fig {
+    font: 800 clamp(34px, 4.4vw, 52px)/1 var(--display); letter-spacing: -0.03em; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .ledger-row .desc { max-width: 58ch; }
+  .ledger-row .org { font: 400 13px/1.4 var(--mono); color: var(--muted); text-align: right; }
+  @media (max-width: 760px) {
+    .ledger-row { grid-template-columns: 1fr; }
+    .ledger-row .org { text-align: left; }
+  }
+
+  /* Case studies */
+  .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 800px) { .cases { grid-template-columns: 1fr; } }
+  .case {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: clamp(22px, 3vw, 32px); display: grid; grid-template-rows: auto auto 1fr auto; gap: 14px;
+  }
+  .case .tag { font: 500 12px/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .case dl { margin: 0; display: grid; gap: 10px; }
+  .case dt { font: 500 11px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .case dd { margin: 0; font-size: 15.5px; }
+  .case .result {
+    border-top: 1px solid var(--rule); padding-top: 14px; font: 500 14px/1.5 var(--mono); color: var(--ink);
+  }
+
+  /* Experience */
+  .roles { display: grid; }
+  .role {
+    display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 8px 40px; padding-block: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  .role:first-child { border-top: 2px solid var(--ink); }
+  .role .when { font: 400 13px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .role .when b { display: block; font-weight: 500; color: var(--ink); }
+  .role .co { font: 800 13px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .role h3 { margin-bottom: 4px; }
+  .role .loc { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+  .role ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; max-width: 70ch; }
+  .role li::marker { color: var(--accent); }
+  @media (max-width: 700px) { .role { grid-template-columns: 1fr; } }
+
+  /* Education + skills */
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 64px); }
+  @media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
+  .edu { display: grid; gap: 26px; }
+  .edu-item h3 { font-size: 19px; }
+  .edu-item .deg { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .edu-item .meta { font: 400 13px/1.5 var(--mono); color: var(--muted); margin-top: 6px; }
+  .edu-item p.note { font-size: 15px; margin-top: 8px; }
+  .kit { display: grid; gap: 22px; }
+  .kit h3 { font: 500 12px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .chips li { font-size: 14px; padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface); }
+
+  /* Beyond */
+  .beyond { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  @media (max-width: 800px) { .beyond { grid-template-columns: 1fr; } }
+  .beyond h3 { margin-bottom: 8px; }
+  .beyond p { color: var(--muted); font-size: 16px; }
+  .fit > div { display: grid; grid-template-rows: auto 1fr auto; gap: 0; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .fit p { color: var(--ink); font-size: 15.5px; }
+  .fit p.proof { margin-top: 16px; font: 500 13px/1.5 var(--mono); color: var(--accent); }
+
+  /* Contact */
+  .contact { background: var(--ink); color: var(--ground); border-top: 0; }
+  .contact .eyebrow { color: var(--mark); }
+  .contact h2 { max-width: 18ch; }
+  .contact p.sub { margin-top: 16px; max-width: 56ch; opacity: .82; }
+  .contact-rows { margin-top: 36px; display: grid; gap: 14px; max-width: 640px; }
+  .contact-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding: 16px 0; border-bottom: 1px solid color-mix(in srgb, var(--ground) 22%, transparent);
+  }
+  .contact-row .k { font: 500 12px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; opacity: .7; }
+  .contact-row .v { font: 600 clamp(17px, 2vw, 21px)/1.3 var(--display); user-select: all; word-break: break-all; }
+  .contact-row a.v { text-decoration: none; border-bottom: 2px solid var(--mark); }
+  .copy {
+    font: 500 13px/1 var(--mono); padding: 9px 14px; border-radius: 6px; cursor: pointer;
+    background: transparent; color: var(--ground); border: 1px solid color-mix(in srgb, var(--ground) 40%, transparent);
+  }
+  .copy:hover { background: color-mix(in srgb, var(--ground) 12%, transparent); }
+  footer { background: var(--ink); color: var(--ground); }
+  footer .wrap { padding-block: 24px 32px; font: 400 12px/1.5 var(--mono); opacity: .6; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+</style>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="monogram" href="#top">LHM<span>.</span></a>
+    <ul>
+      <li><a href="#impact">Impact</a></li>
+      <li class="opt"><a href="#fit">Fit</a></li>
+      <li class="opt"><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="opt"><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="name">Luiz Henrique Mathias</p>
+        <h1>I build the strategy, then the <span class="hl">system that runs it.</span></h1>
+        <p class="lede">Strategy, digital transformation, and product leader. I started as an SAP ERP intern in 2009 and have spent the years since across enterprise software consulting, automotive, and SAP itself. Along the way I guided digital roadmaps worth €142M, co-led a carve-out inside a €7.4B divestiture, and shipped agentic AI into production. <em>MBA candidate at Carnegie Mellon's Tepper School of Business, class of 2027.</em></p>
+        <div class="now"><span class="dot" aria-hidden="true"></span>Now: GTM Strategy Intern, SAP Global CRO Office</div>
+        <div class="cta">
+          <a class="btn solid" href="#contact">Get in touch</a>
+          <a class="btn line" href="https://www.linkedin.com/in/luizmathias/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <aside class="route" aria-label="Career route">
+        <p class="eyebrow">The route so far</p>
+        <ol>
+          <li><span class="yr">2009</span><span class="city">Curitiba<span class="what">SAP ERP intern · Production Engineering, PUC-PR</span></span></li>
+          <li><span class="yr">2012</span><span class="city">Madrid<span class="what">Exchange, Universidad Politécnica de Madrid</span></span></li>
+          <li><span class="yr">2014</span><span class="city">Curitiba<span class="what">SAP project and service leadership</span></span></li>
+          <li><span class="yr">2017</span><span class="city">Rio de Janeiro<span class="what">Postgraduate, FGV</span></span></li>
+          <li><span class="yr">2017-21</span><span class="city">Five countries in LatAm<span class="what">Renault-Nissan-Mitsubishi Alliance</span></span></li>
+          <li><span class="yr">2021-24</span><span class="city">Curitiba / Waterloo<span class="what">Renault Group, IS/IT & Digital</span></span></li>
+          <li class="here"><span class="yr">2025-</span><span class="city">Pittsburgh<span class="what">CMU Tepper MBA · SAP</span></span></li>
+        </ol>
+      </aside>
+    </div>
+  </header>
+
+  <section id="impact">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Impact ledger</p>
+        <h2>Numbers I can put my name next to.</h2>
+      </div>
+      <div class="ledger" role="list">
+        <div class="ledger-row" role="listitem">
+          <div class="fig">€142M</div>
+          <p class="desc">Cost reduction and revenue growth from digital roadmaps I guided with 6 country CFOs and 5 procurement heads, anchored on OKRs I led.</p>
+          <div class="org">Renault Group</div>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <div class="fig">€44.7M</div>
+          <p class="desc">Pipeline influenced across 269 opportunities, measured with the attribution method I created. It is now the standard for SCM executive events.</p>
+          <div class="org">SAP</div>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <div class="fig">€7.4B</div>
+          <p class="desc">Divestiture of global powertrain operations. I co-led the Latin America technology carve-out and kept the business running from Day 1.</p>
+          <div class="org">Renault Group</div>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <div class="fig">90%</div>
+          <p class="desc">Less production time per deal-intelligence release (5 hours down to 15 minutes), with a production AI system I built for the CRO office.</p>
+          <div class="org">SAP</div>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <div class="fig">€4M</div>
+          <p class="desc">Operational margin gains from transformation programs of up to 35 consultants across Finance, Controlling, Foreign Trade, Costing, and Compliance.</p>
+          <div class="org">Renault-Nissan-Mitsubishi Alliance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Where I fit</p>
+        <h2>One profile, three ways to put it to work.</h2>
+        <p>I've sat on the consulting side, the client side, and the software vendor side of the same transformation problems.</p>
+      </div>
+      <div class="beyond fit">
+        <div>
+          <h3>Strategy & transformation consulting</h3>
+          <p>C-level stakeholder work with CFOs, CROs, and procurement heads; carve-outs and post-deal continuity; portfolio prioritization; hypothesis-driven analysis in think-cell and SQL.</p>
+          <p class="proof">€7.4B divestiture · €142M roadmap · 6 countries</p>
+        </div>
+        <div>
+          <h3>Tech, product & go-to-market</h3>
+          <p>Agentic AI built and running in production; GTM strategy for SAP's supply chain portfolio; product vision and roadmaps with Product Owners; pipeline attribution for sales leadership.</p>
+          <p class="proof">90% faster releases · €44.7M pipeline · 3,280 readers</p>
+        </div>
+        <div>
+          <h3>Corporate strategy & digital in industry</h3>
+          <p>Three years owning finance and procurement technology for Renault in Latin America: IT service management for ~65 applications, SAP ERP, RPA, and data & analytics.</p>
+          <p class="proof">Team of 13 · €1.8M profit · Project of the Year</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Four problems, and what I did about them.</h2>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <p class="tag">SAP · AI in production · 2026</p>
+          <h3>Automating the CRO office's deal intelligence</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Each deal-intelligence release took about 5 hours of manual research and writing, which capped how often the field heard about wins.</dd></div>
+            <div><dt>What I did</dt><dd>Built a production AI system that drafts the stories, and authored 10 editions for the global field.</dd></div>
+          </dl>
+          <p class="result">5 h → 15 min per release · 3,280 readers · 77% open rate</p>
+        </article>
+        <article class="case">
+          <p class="tag">SAP · Go-to-market · 2026</p>
+          <h3>Rebuilding the CSCO/COO executive network in-house</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>An external consultancy exited the supply chain executive program, leaving no owner for the network.</dd></div>
+            <div><dt>What I did</dt><dd>Built the go-to-market strategy, won CRO and CMO sponsorship for an executive intelligence platform, and activated the 35-seat Executive Circle at SAP Connect 2026 across three regions.</dd></div>
+          </dl>
+          <p class="result">35 seats · C-level invitations from the CRO's mailbox</p>
+        </article>
+        <article class="case">
+          <p class="tag">Renault Group · Divestiture · 2021-24</p>
+          <h3>Carving out Latin America technology in a €7.4B deal</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>The divestiture of global powertrain operations meant separating shared finance and procurement platforms without stopping the business.</dd></div>
+            <div><dt>What I did</dt><dd>Co-led the regional IS carve-out: assessed platform dependencies, defined the separation plan, and ran Day 1 continuity.</dd></div>
+          </dl>
+          <p class="result">Recognized as a global benchmark</p>
+        </article>
+        <article class="case">
+          <p class="tag">Renault Group · Finance & Procurement · 2023</p>
+          <h3>Running 62+ platforms as one portfolio</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Critical finance and procurement functions sat on 62+ systems (SAP ERP, Tableau, RPA) across six countries.</dd></div>
+            <div><dt>What I did</dt><dd>Led a team of 13, set the digital roadmap with country CFOs, and prioritized the initiatives with the clearest profit impact.</dd></div>
+          </dl>
+          <p class="result">€1.8M profitability in Brazil · Project of the Year 2023</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Experience</p>
+        <h2>From SAP implementations to the CRO office.</h2>
+      </div>
+      <div class="roles">
+        <div class="role">
+          <div class="when"><b>May 2026 - Nov 2026</b>Pittsburgh, PA</div>
+          <div>
+            <p class="co">SAP</p>
+            <h3>GTM Strategy Intern, Supply Chain Management Sales Operations</h3>
+            <p class="loc">Global CRO Office</p>
+            <ul>
+              <li>Built the go-to-market strategy for SAP SCM's global CSCO/COO executive network after an external consultancy's exit, and won CRO and CMO sponsorship for an executive intelligence platform.</li>
+              <li>Built a production AI system for the deal-intelligence program, raising productivity 90%.</li>
+              <li>Created the pipeline-attribution methodology now standard for SCM executive events, plus a framework that prioritizes executive invitations by revenue, open pipeline, business-line seniority, and AI adoption maturity.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when"><b>Jun 2024 - May 2025</b>Independent</div>
+          <div>
+            <p class="co">Advisory</p>
+            <h3>Technology Strategy Advisor</h3>
+            <p class="loc">Automotive clients</p>
+            <ul>
+              <li>Advised automotive companies on technology strategy while preparing for the MBA.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when"><b>Mar 2021 - May 2024</b>Curitiba, Brazil / Waterloo, Canada</div>
+          <div>
+            <p class="co">Renault Group</p>
+            <h3>IS/IT & Digital Manager Latin America</h3>
+            <p class="loc">Finance, Controlling & Procurement</p>
+            <ul>
+              <li>Co-led the Latin America technology carve-out for the €7.4B divestiture of global powertrain operations.</li>
+              <li>Worked with 6 country CFOs and 5 procurement heads; led OKR definition and digital roadmaps that generated €142M in cost reduction and revenue growth.</li>
+              <li>Led a team of 13 across 62+ platforms; delivered €1.8M in profitability to the Brazilian unit and won Project of the Year 2023.</li>
+              <li>Owned IT service management and the project portfolio for SAP ERP, RPA, and data & analytics, running both Agile and V-cycle delivery.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when"><b>Mar 2017 - Feb 2021</b>Argentina, Brazil, Chile, Colombia, Mexico</div>
+          <div>
+            <p class="co">Alliance Renault-Nissan-Mitsubishi</p>
+            <h3>Portfolio & Program Manager Consultant</h3>
+            <p class="loc">Digital Transformation</p>
+            <ul>
+              <li>Led cross-functional transformation programs with up to 35 consultants across Finance, Controlling, Foreign Trade, Costing, and Compliance, delivering €4M in operational margin gains.</li>
+              <li>Aligned the Latin America finance project portfolio with global programs to capture synergies across the Alliance.</li>
+              <li>Coached Product Owners on product vision and roadmaps, and organized Scrum and Design Thinking training for IS/IT and business teams.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when"><b>Feb 2014 - Feb 2017</b>Curitiba, Brazil</div>
+          <div>
+            <p class="co">Cast Group</p>
+            <h3>Project Manager · Service Level Manager · PMO Expert</h3>
+            <p class="loc">Top 10 SAP ERP consulting firm in Brazil</p>
+            <ul>
+              <li>Led implementation teams of 5 to 12 consultants for telecom, pulp & paper, construction, and CPG clients.</li>
+              <li>Hit every sales target, generating over USD 0.8M in annual revenue while ensuring SOX compliance.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <div class="when"><b>Nov 2009 - Sep 2013</b>Curitiba, Brazil</div>
+          <div>
+            <p class="co">Pelissari Gestão e Tecnologia</p>
+            <h3>SAP ERP Intern → PMO Analyst → Project Specialist</h3>
+            <p class="loc">Early career</p>
+            <ul>
+              <li>Started in SAP ERP Materials Management and Production Planning, then moved into the project management office and project delivery.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap two">
+      <div>
+        <div class="sec-head">
+          <p class="eyebrow">Education</p>
+          <h2>Engineer by training, strategist by choice.</h2>
+        </div>
+        <div class="edu">
+          <div class="edu-item">
+            <h3>Carnegie Mellon University, Tepper School of Business</h3>
+            <p class="deg">MBA (STEM designated)</p>
+            <p class="meta">Pittsburgh, PA · Class of 2027</p>
+            <p class="note">Concentrations in Strategy, Artificial Intelligence, Technology Strategy & Product Management, and Operations Management. Tepper School MBA Scholarship. Golub Capital Board Fellow. VP of Alumni Relations, Latin America Business Association.</p>
+          </div>
+          <div class="edu-item">
+            <h3>Fundação Getúlio Vargas (FGV)</h3>
+            <p class="deg">Postgraduate degree, Strategic People Management</p>
+            <p class="meta">Rio de Janeiro, Brazil · 2017</p>
+            <p class="note">Co-author of the 2015 UNDP report <i>Brazilian Inclusive Markets</i> (<i lang="pt">Mercados Inclusivos no Brasil: desafios e oportunidades do ecossistema de negócios</i>).</p>
+          </div>
+          <div class="edu-item">
+            <h3>Pontifícia Universidade Católica do Paraná (PUC-PR)</h3>
+            <p class="deg">B.S., Production Engineering</p>
+            <p class="meta">Curitiba, Brazil · 2014</p>
+            <p class="note">Exchange semester at Universidad Politécnica de Madrid (2012), studying game theory, operations, project management, and renewable energy. Co-founder of the Engineering Athletics Association.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-head">
+          <p class="eyebrow">Toolkit</p>
+          <h2>What I work with.</h2>
+        </div>
+        <div class="kit">
+          <div>
+            <h3>AI & automation</h3>
+            <ul class="chips"><li>Agentic AI development</li><li>Intent-based development</li><li>Generative AI in daily practice</li><li>Claude Code</li><li>MCP</li><li>n8n</li><li>RPA</li><li>Low-code automation</li></ul>
+          </div>
+          <div>
+            <h3>Data & analysis</h3>
+            <ul class="chips"><li>Python</li><li>SQL</li><li>Tableau</li><li>Power BI</li><li>think-cell</li><li>Airtable</li></ul>
+          </div>
+          <div>
+            <h3>Enterprise & delivery</h3>
+            <ul class="chips"><li>SAP ERP (MM & PP)</li><li>PMP (2020)</li><li>ITIL Foundation</li><li>Kanban (KMP II)</li><li>Scrum & Design Thinking</li><li>OKRs</li><li>Carve-outs</li></ul>
+          </div>
+          <div>
+            <h3>Executive education</h3>
+            <ul class="chips"><li>Kellogg, Product Strategy (2020)</li><li>MIT Sloan, Digital Transformation (2018)</li></ul>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <ul class="chips"><li>Portuguese (native)</li><li>English (fluent)</li><li>Spanish (fluent)</li><li>French (basic)</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beyond">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Off the clock</p>
+        <h2>The same habits, different tables.</h2>
+      </div>
+      <div class="beyond">
+        <div><h3>Value investing</h3><p>I read annual reports the way some people read novels, looking for durable businesses priced below what they're worth.</p></div>
+        <div><h3>Strategy board games</h3><p>Long games with scarce resources and many paths to victory. Good practice for thinking three moves ahead.</p></div>
+        <div><h3>Mixology</h3><p>Balancing a drink is a small optimization problem: a few inputs, tight tolerances, and fast feedback from the people you serve.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's talk strategy, technology, or both.</h2>
+      <p class="sub">I'm exploring post-MBA roles in strategy consulting, technology and product strategy, and corporate strategy. I'm always happy to connect with people working on hard transformation problems.</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <div><div class="k">Email</div><div class="v" id="email">luizhenm@tepper.cmu.edu</div></div>
+          <button class="copy" id="copy-email" type="button">Copy</button>
+        </div>
+        <div class="contact-row">
+          <div><div class="k">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/luizmathias/" target="_blank" rel="noopener">linkedin.com/in/luizmathias</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap"><span>© 2026 Luiz Henrique Mathias</span><span>Pittsburgh, PA</span></div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var el = document.getElementById('email');
+    btn.addEventListener('click', function () {
+      var text = el.textContent.trim();
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected, press Ctrl+C';
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else { fallback(); }
+      } catch (e) { fallback(); }
+    });
+  })();
+</script>
+
+</html>
