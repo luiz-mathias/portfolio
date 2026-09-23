@@ -10,6 +10,8 @@ Personal portfolio site: strategy, digital transformation, and product leader; M
 | --- | --- |
 | `index.html` | The whole site: one static page, no build step or dependencies |
 | `deploy-vercel.ps1` | Deploys `index.html` to Vercel through the REST API (PowerShell, no Node needed) |
+| `push-github.ps1` | Uploads files to this repo through the GitHub REST API (no Git needed) |
+| `CLAUDE.md` | Project instructions and preferences that Claude Code loads each session |
 | `logs/` | Session logs, one file per session named `YYYY-MM-DD_session-log.md` (add `-2`, `-3` for more than one per day) |
 
 ## Run locally
